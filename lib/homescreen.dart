@@ -16,16 +16,20 @@ class MyApp2 extends StatelessWidget {
   }
 }
 
-class _beranda extends  StatelessWidget{
-
+class Beranda extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
+    Size screenSize = MediaQuery.of(context).size;
+    Orientation orientation = MediaQuery.of(context).orientation;
+
     return Scaffold(
-      body: Container (
-        height: double.infinity,
-        width: double.infinity,
-        color: Colors.pink[800],
-        child: Column(
+      body:  Container(
+          height: double.infinity,
+          width: double.infinity,
+          color: Colors.pink[800],
+          child: SingleChildScrollView(
+            physics: AlwaysScrollableScrollPhysics(),
+            child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget> [
               SizedBox(height: 40.0),
@@ -84,11 +88,6 @@ class _beranda extends  StatelessWidget{
                             color: Colors.black38
                         ),
                       ),
-                      onSubmitted: (String value) {
-                        setState(() {
-                          _nomorrekening = value;
-                        });
-                      },
                     ),
                   ),
                 ],
@@ -141,11 +140,6 @@ class _beranda extends  StatelessWidget{
                             color: Colors.black38
                         ),
                       ),
-                      onSubmitted: (String value) {
-                        setState(() {
-                          _namapemilik = value;
-                        });
-                      },
                     ),
                   ),
                 ],
@@ -157,21 +151,21 @@ class _beranda extends  StatelessWidget{
                 alignment: Alignment.centerLeft,
                 margin: EdgeInsets.symmetric(horizontal: 20),
                 child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.teal[700],
-                      minimumSize: const Size.fromHeight(50),
-                    ),
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) {
-                        return FirstScreen();
-                      }));
-                    },
-                    child : Text(
-                      'Masuk',
-                      style: TextStyle(fontSize: 16),
-                    ),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.teal[700],
+                    minimumSize: const Size.fromHeight(50),
                   ),
-            ),
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) {
+                      return FirstScreen();
+                    }));
+                  },
+                  child : Text(
+                    'Masuk',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+              ),
 
               SizedBox(height: 10.0),
 
@@ -197,7 +191,9 @@ class _beranda extends  StatelessWidget{
               ),
             ],
           ),
+        ),
       ),
+
     );
   }
 }
