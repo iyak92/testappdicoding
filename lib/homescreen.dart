@@ -15,14 +15,8 @@ class MyApp2 extends StatelessWidget {
     );
   }
 }
-class Beranda extends StatefulWidget {
-  @override
-  _beranda createState() => _beranda();
 
-}
-class _beranda extends State<Beranda>{
-  String _nomorrekening = '';
-  String _namapemilik = '';
+class _beranda extends  StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
