@@ -42,7 +42,6 @@ class _FirstScreenState extends State<FirstScreen> {
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: "Qty",
-
                 ),
                 keyboardType: TextInputType.number,
                 inputFormatters: <TextInputFormatter>[
@@ -57,20 +56,20 @@ class _FirstScreenState extends State<FirstScreen> {
             child : Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget> [
-                Text(
-                  namabarang,
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold
+                  Text(
+                    namabarang,
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold
+                    ),
                   ),
-                ),
 
-                Text(
-                  spekbarang,
-                  style: TextStyle(
-                      fontSize: 10,
+                  Text(
+                    spekbarang,
+                    style: TextStyle(
+                        fontSize: 10,
+                    ),
                   ),
-                ),
               ],
             ),
           ),
@@ -82,7 +81,7 @@ class _FirstScreenState extends State<FirstScreen> {
                 Padding(
                   padding: EdgeInsets.only(right: 10),
                   child: Text(
-                    'Rp.',
+                    'Rp. ',
                     textAlign: TextAlign.right,
                     style: TextStyle(
                       fontSize: 10,
@@ -91,16 +90,21 @@ class _FirstScreenState extends State<FirstScreen> {
                     ),
                   ),
                 ),
-                Spacer(flex: 1),
-                Padding(
-                  padding: EdgeInsets.only(right: 10),
-                  child: Text(
-                  hargabarang,
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.teal[700],
+
+                Expanded(
+                  child: Container(
+                    padding: EdgeInsets.only(right: 10),
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        hargabarang,
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.teal[700],
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -138,6 +142,7 @@ class _FirstScreenState extends State<FirstScreen> {
         child: Column(
           children: <Widget>[
             Expanded(
+              flex: 9,
               child: SingleChildScrollView(
                   child: Column(
                     children: <Widget>[
@@ -145,6 +150,7 @@ class _FirstScreenState extends State<FirstScreen> {
                       itembarang('Minyak Goreng', '1 liter', '27000'),
                       itembarang('Deterjen', '880 gram', '18500'),
                       itembarang('Beras', '1 Kg', '11500'),
+
                       ListView.builder(
                         physics: ScrollPhysics(parent: null),
                         shrinkWrap: true,
@@ -162,7 +168,6 @@ class _FirstScreenState extends State<FirstScreen> {
                                         decoration: InputDecoration(
                                           border: OutlineInputBorder(),
                                           labelText: "Qty",
-
                                         ),
                                         keyboardType: TextInputType.number,
                                         inputFormatters: <TextInputFormatter>[
@@ -178,19 +183,21 @@ class _FirstScreenState extends State<FirstScreen> {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: <Widget> [
                                         Text(
-                                          'namabarang',
-                                          style: TextStyle(
+                                            'namabarang',
+                                            overflow: TextOverflow.ellipsis,
+                                            maxLines: 1,
+                                            style: TextStyle(
                                               fontSize: 18,
                                               fontWeight: FontWeight.bold
+                                            ),
                                           ),
-                                        ),
 
                                         Text(
-                                          'spekbarang',
-                                          style: TextStyle(
-                                            fontSize: 10,
+                                            'spekbarang',
+                                            style: TextStyle(
+                                              fontSize: 10,
+                                            ),
                                           ),
-                                        ),
                                       ],
                                     ),
                                   ),
@@ -203,26 +210,31 @@ class _FirstScreenState extends State<FirstScreen> {
                                           padding: EdgeInsets.only(right: 10),
                                           child: Text(
                                             'Rp.',
-                                            textAlign: TextAlign.right,
-                                            style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.teal[700],
+                                              textAlign: TextAlign.right,
+                                              style: TextStyle(
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.teal[700],
+                                              ),
+                                            ),
+                                          ),
+
+                                        Expanded(
+                                          child: Container(
+                                          padding: EdgeInsets.only(right: 10),
+                                          child: FittedBox(
+                                            fit: BoxFit.scaleDown,
+                                            child: Text(
+                                              ' hargabarang',
+                                              textAlign: TextAlign.right,
+                                              style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.teal[700],
+                                              ),
                                             ),
                                           ),
                                         ),
-                                        Spacer(flex: 1),
-                                        Padding(
-                                          padding: EdgeInsets.only(right: 10),
-                                          child: Text(
-                                            'hargabarang',
-                                            textAlign: TextAlign.right,
-                                            style: TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.teal[700],
-                                            ),
-                                          ),
                                         ),
                                       ],
                                     ),
@@ -238,7 +250,11 @@ class _FirstScreenState extends State<FirstScreen> {
                   ),
                 ),
               ),
-            Container(
+
+            Flexible(
+              flex: 1,
+              fit: FlexFit.loose,
+              child:Container(
               height: 60,
               width: double.maxFinite,
               color: Colors.teal[700],
@@ -248,24 +264,29 @@ class _FirstScreenState extends State<FirstScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   Spacer(flex: 1),
-                  Text(
-                    'Total : ',
-                    style: TextStyle(
-                      color: Colors.orangeAccent,
-                      fontSize: 20,
+                  Expanded(
+                    child:Text(
+                    'Total: ',
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      style: TextStyle(
+                        color: Colors.orangeAccent,
+                        fontSize: 20,
+                      ),
                     ),
                   ),
-                  Text(
+                    Text(
                     'Rp 395.000',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold
+                      ),
                     ),
-                  ),
                   Spacer(flex: 2),
                 ],
               ),
+            ),
             ),
           ],
         ),
